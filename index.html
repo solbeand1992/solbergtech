@@ -43,6 +43,12 @@
       </div>
     </section>
 
+    <section id="status">
+      <h2>Status</h2>
+      <p>Temperatur: <strong id="tempValue">–</strong> °C</p>
+      <p class="small">Sist oppdatert: <span id="tempTime">–</span></p>
+    </section>
+
     <footer id="kontakt">
       <p>
         Kontakt:
@@ -51,31 +57,29 @@
     </footer>
 
   </div>
+
   <script>
-  async function loadTemperature() {
-    const url = "https://api.solbergtech.no/temperature"; // <-- din VPS/API
-    try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
+    async function loadTemperature() {
+      const url = "https://api.solbergtech.no/temperature";
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
 
-      document.getElementById("tempValue").textContent = data.temperature_c?.toFixed(1) ?? "–";
-      document.getElementById("tempTime").textContent = data.ts ?? "–";
-    } catch (e) {
-      document.getElementById("tempValue").textContent = "utilgjengelig";
-      document.getElementById("tempTime").textContent = "–";
+        document.getElementById("tempValue").textContent =
+          (typeof data.temperature_c === "number") ? data.temperature_c.toFixed(1) : "–";
+
+        document.getElementById("tempTime").textContent =
+          data.ts_unix ? new Date(data.ts_unix * 1000).toLocaleString("no-NO") : "–";
+
+      } catch (e) {
+        document.getElementById("tempValue").textContent = "utilgjengelig";
+        document.getElementById("tempTime").textContent = "–";
+      }
     }
-  }
 
-  loadTemperature();
-  setInterval(loadTemperature, 60_000); // oppdater hvert 60. sekund
-</script>
+    loadTemperature();
+    setInterval(loadTemperature, 60_000);
+  </script>
 </body>
 </html>
-<section>
-  <h2>Status</h2>
-  <p>Temperatur: <strong id="tempValue">–</strong> °C</p>
-  
-  <p class="small">Sist oppdatert: <span id="tempTime">–</span></p>
-</section>
-
