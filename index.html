@@ -51,5 +51,31 @@
     </footer>
 
   </div>
+  <script>
+  async function loadTemperature() {
+    const url = "https://api.solbergtech.no/temperature"; // <-- din VPS/API
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+
+      document.getElementById("tempValue").textContent = data.temperature_c?.toFixed(1) ?? "–";
+      document.getElementById("tempTime").textContent = data.ts ?? "–";
+    } catch (e) {
+      document.getElementById("tempValue").textContent = "utilgjengelig";
+      document.getElementById("tempTime").textContent = "–";
+    }
+  }
+
+  loadTemperature();
+  setInterval(loadTemperature, 60_000); // oppdater hvert 60. sekund
+</script>
 </body>
 </html>
+<section>
+  <h2>Status</h2>
+  <p>Temperatur: <strong id="tempValue">–</strong> °C</p>
+  
+  <p class="small">Sist oppdatert: <span id="tempTime">–</span></p>
+</section>
+
