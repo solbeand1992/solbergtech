@@ -189,8 +189,8 @@ a:hover {
 }
 /* Tving nav-logo til riktig størrelse */
 .nav-logo {
-  width: 100px !important;
-  height: 100px !important;
+  width: 200px !important;
+  height: 200px !important;
   object-fit: contain;
   display: block;
 }
