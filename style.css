@@ -187,4 +187,10 @@ a:hover {
   display: block;
   margin: 0 auto 24px;
 }
+.nav-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
 
