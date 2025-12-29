@@ -1,36 +1,63 @@
 :root {
   --accent: #2563eb;
+  --bg: #f8f8f8;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --border: #e5e7eb;
+  --card: #ffffff;
 }
 
+* { box-sizing: border-box; }
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   margin: 0;
-  background-color: #f8f8f8;
-  color: #1f2937;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 60px 24px;
+  padding: 48px 24px;
 }
 
-/* Navigation */
+/* =========================
+   NAV
+   ========================= */
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 14px 0;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-weight: 700;
   letter-spacing: 0.2px;
+}
+
+/* Logo i toppmeny:
+   - Bruk bredde for banner-logo (som din)
+   - Høyde auto for riktig proporsjon */
+.nav-logo {
+  width: 220px;      /* juster: 160–260 */
+  height: auto;
+  display: block;
+}
+
+/* Hvis du en dag bruker et kvadratisk ikon (kun ST),
+   kan du heller bruke denne klassen */
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
 }
 
 .nav .links a {
@@ -41,37 +68,47 @@ body {
 
 .nav .links a:hover {
   color: var(--accent);
-  text-decoration: none;
 }
 
-/* Hero */
-h1 {
-  font-size: 42px;
-  margin: 0 0 10px 0;
-}
-
+/* =========================
+   HERO
+   ========================= */
 .hero {
   text-align: center;
-  padding: 20px 0 50px 0;
+  padding: 10px 0 42px;
+}
+
+.hero-logo {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 0 0 10px;
 }
 
 .subtitle {
   font-size: 18px;
-  color: #4b5563;
+  color: var(--muted);
   margin: 0;
 }
 
-/* Sections */
+/* =========================
+   SECTIONS / TYPO
+   ========================= */
 section {
-  margin-top: 30px;
-  margin-bottom: 34px;
+  margin: 28px 0 34px;
 }
 
 h2 {
   font-size: 24px;
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   color: var(--accent);
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--border);
   padding-bottom: 6px;
 }
 
@@ -88,7 +125,15 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Cards (Services) */
+.small {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =========================
+   CARDS (Tjenester)
+   ========================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -97,108 +142,18 @@ a:hover {
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
-.icon {
-  font-size: 18px;
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
 }
-
-/* Tags */
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.tag {
-  background: #eef2f7;
-  border: 1px solid #e5e7eb;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 14px;
-  color: #374151;
-}
-
-/* CTA (Contact) */
-.cta {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 24px;
-}
-
-.button {
-  display: inline-block;
-  margin-top: 10px;
-  background: var(--accent);
-  color: #ffffff;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.button:hover {
-  filter: brightness(0.95);
-  text-decoration: none;
-}
-
-.small {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-/* Logo bubble */
-.logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent);
-  color: #ffffff;
-  font-weight: 700;
-}
-.logo {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  margin-right: 10px;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-}
-/* Logo i topp / hero */
-.site-logo {
-  max-width: 100px;   /* juster etter smak */
-  height: auto;
-  display: block;
-  margin: 0 auto 24px;
-}
-/* Tving nav-logo til riktig størrelse */
-.nav-logo {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: contain;
-  display: block;
-}
-
-/* Viktig: gjør brand kompakt og ryddig */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
