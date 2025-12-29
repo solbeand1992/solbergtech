@@ -188,8 +188,8 @@ a:hover {
   margin: 0 auto 24px;
 }
 .nav-logo {
-  width: 42px;
-  height: 42px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   display: block;
 }
