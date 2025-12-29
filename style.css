@@ -157,3 +157,16 @@ footer {
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
+.hero-visual {
+  margin: 30px auto 60px;
+  max-width: 900px;
+  text-align: center;
+}
+
+.hero-visual img {
+  width: 100%;
+  max-width: 820px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
