@@ -180,4 +180,11 @@ a:hover {
   align-items: center;
   font-weight: 700;
 }
+/* Logo i topp / hero */
+.site-logo {
+  max-width: 280px;   /* juster etter smak */
+  height: auto;
+  display: block;
+  margin: 0 auto 24px;
+}
 
