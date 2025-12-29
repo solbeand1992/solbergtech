@@ -46,7 +46,7 @@ body {
    - Bruk bredde for banner-logo (som din)
    - Høyde auto for riktig proporsjon */
 .nav-logo {
-  width: 260px;      /* juster: 160–260 */
+  width: 360px;      /* juster: 160–260 */
   height: auto;
   display: block;
 }
