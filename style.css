@@ -187,16 +187,10 @@ a:hover {
   display: block;
   margin: 0 auto 24px;
 }
-.nav-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  display: block;
-}
 /* Tving nav-logo til riktig størrelse */
 .nav-logo {
-  width: 42px !important;
-  height: 42px !important;
+  width: 100px !important;
+  height: 100px !important;
   object-fit: contain;
   display: block;
 }
