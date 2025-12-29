@@ -193,4 +193,18 @@ a:hover {
   object-fit: contain;
   display: block;
 }
+/* Tving nav-logo til riktig størrelse */
+.nav-logo {
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* Viktig: gjør brand kompakt og ryddig */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
