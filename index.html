@@ -3,55 +3,123 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SolbergTech</title>
+  <title>Solberg Tech</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
 
     <nav class="nav">
-      <div class="brand">
-        <img src="SolbergtechLogo.png" alt="SolbergTech logo" class="nav-logo">
+      <a class="brand" href="#top" aria-label="Solberg Tech">
+        <img src="SolbergtechLogo.png" alt="Solberg Tech logo" class="nav-logo">
+      </a>
+
+      <div class="nav-links">
+        <a href="#tjenester">Tjenester</a>
+        <a href="#om">Om</a>
+        <a href="#status">Status</a>
+        <a class="btn btn-small" href="#kontakt">Kontakt</a>
       </div>
     </nav>
 
-    <header class="hero">
-      <p class="subtitle">Industriell automasjon, PLS/SCADA og fjernovervåking</p>
+    <header id="top" class="hero">
+      <div class="hero-content">
+        <h1>Industriell automasjon og OT-fjernaksess</h1>
+        <p class="lead">
+          Robust PLS/SCADA, idriftsettelse og sikker fjernovervåking (4G/VPN) for driftssikre anlegg.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#kontakt">Ta kontakt</a>
+          <a class="btn btn-ghost" href="#tjenester">Se tjenester</a>
+        </div>
+
+        <ul class="hero-badges" aria-label="Kompetanseområder">
+          <li>PLS</li>
+          <li>SCADA/HMI</li>
+          <li>Idriftsettelse</li>
+          <li>4G/VPN</li>
+        </ul>
+      </div>
     </header>
 
-    <section class="hero-visual">
-      <img src="Automation.png"
-           alt="Industriell automasjon med PLS, HMI og SCADA">
-    </section>
+    <section id="tjenester" class="section">
+      <div class="section-head">
+        <h2>Tjenester</h2>
+        <p class="muted">Leveranser som dekker hele kjeden – fra programmering til stabil drift.</p>
+      </div>
 
-    <section id="om">
-      <h2>Om SolbergTech</h2>
-      <p>
-        SolbergTech leverer robuste og driftssikre løsninger innen industriell automasjon,
-        med fokus på PLS-systemer, SCADA og sikker fjernovervåking.
-      </p>
-    </section>
-
-    <section id="tjenester">
-      <h2>Tjenester</h2>
       <div class="cards">
-        <div class="card">PLS-programmering</div>
-        <div class="card">Idriftsettelse</div>
-        <div class="card">Fjernovervåking (4G/VPN)</div>
+        <article class="card">
+          <h3>PLS-programmering</h3>
+          <p>Strukturert kode, stabile sekvenser og tydelig feilhåndtering (Siemens m.fl.).</p>
+        </article>
+
+        <article class="card">
+          <h3>Idriftsettelse</h3>
+          <p>Test, innkjøring og verifikasjon i felt – med fokus på sikker og forutsigbar drift.</p>
+        </article>
+
+        <article class="card">
+          <h3>Fjernovervåking (4G/VPN)</h3>
+          <p>Sikker tilgang til anlegg, logging og oppfølging – uten unødige åpninger mot nettet.</p>
+        </article>
       </div>
     </section>
 
-    <section id="status">
-      <h2>Status</h2>
-      <p>Temperatur: <strong id="tempValue">–</strong> °C</p>
-      <p class="small">Sist oppdatert: <span id="tempTime">–</span></p>
+    <section id="status" class="section section-compact">
+      <div class="status-card">
+        <div class="status-title">
+          <h2>Status</h2>
+          <p class="muted">Live temperatur fra API.</p>
+        </div>
+
+        <div class="status-grid">
+          <div class="status-metric">
+            <span class="label">Temperatur</span>
+            <span class="value"><strong id="tempValue">–</strong> <span class="unit">°C</span></span>
+          </div>
+
+          <div class="status-metric">
+            <span class="label">Sist oppdatert</span>
+            <span class="value"><span id="tempTime">–</span></span>
+          </div>
+        </div>
+
+        <p class="small muted">Oppdateres automatisk hvert minutt.</p>
+      </div>
     </section>
 
-    <footer id="kontakt">
-      <p>
-        Kontakt:
-        <a href="mailto:post@solbergtech.no">post@solbergtech.no</a>
-      </p>
+    <section id="om" class="section">
+      <div class="split">
+        <div>
+          <h2>Om Solberg Tech</h2>
+          <p>
+            Solberg Tech leverer robuste og driftssikre løsninger innen industriell automasjon,
+            med fokus på PLS-systemer, SCADA og sikker fjernovervåking.
+          </p>
+          <p class="muted">
+            Målet er enkle, vedlikeholdbare systemer med tydelig dokumentasjon og trygg tilgang.
+          </p>
+        </div>
+
+        <div class="visual">
+          <img src="Automation.png" alt="Industriell automasjon med PLS, HMI og SCADA" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <footer id="kontakt" class="footer">
+      <div class="footer-inner">
+        <div>
+          <h2>Kontakt</h2>
+          <p class="muted">Send en e-post, så svarer jeg så raskt jeg kan.</p>
+        </div>
+        <div class="footer-actions">
+          <a class="btn" href="mailto:post@solbergtech.no">post@solbergtech.no</a>
+        </div>
+      </div>
+      <p class="tiny muted">© <span id="year"></span> Solberg Tech</p>
     </footer>
 
   </div>
@@ -78,6 +146,8 @@
 
     loadTemperature();
     setInterval(loadTemperature, 60_000);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
