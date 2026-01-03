@@ -163,3 +163,23 @@
   border-top: 1px solid rgba(0,0,0,0.1);
   margin: 18px 0;
 }
+/* --- GLOBAL FAILSAFE --- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- NAV / LOGO --- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.nav-logo {
+  height: 40px;   /* juster 32–48px etter smak */
+  width: auto;
+  display: block;
+}
+
