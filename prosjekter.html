@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Solberg Tech</title>
+  <title>Prosjekter | Solberg Tech</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,103 +20,35 @@
 
       <div id="siteMenu" class="menu" hidden>
         <a href="index.html" class="menu-link">Forside</a>
-        <a href="prosjekter.html" class="menu-link">Prosjekter</a>
+        <a href="prosjekter.html" class="menu-link active">Prosjekter</a>
         <a href="kontakt.html" class="menu-link">Kontakt</a>
       </div>
     </nav>
 
-    <header class="hero">
-      <div class="hero-content">
-        <h1>Industriell automasjon og OT-fjernaksess</h1>
-        <p class="lead">
-          Robust PLS/SCADA, idriftsettelse og sikker fjernovervåking (4G/VPN) for driftssikre anlegg.
-        </p>
-
-        <div class="hero-cta">
-          <a class="btn" href="kontakt.html">Ta kontakt</a>
-        </div>
-      </div>
+    <header class="page-head">
+      <h1>Prosjekter</h1>
+      <p class="lead">Et utvalg leveranser innen automasjon, overvåking og OT-fjernaksess.</p>
     </header>
 
-    <section id="tjenester" class="section">
-      <div class="section-head">
-        <h2>Tjenester</h2>
-      </div>
-
+    <section class="section">
       <div class="cards">
         <article class="card">
-          <h3>PLS-programmering</h3>
-          <p>Strukturert kode, stabile sekvenser og tydelig feilhåndtering.</p>
+          <h3>Fjernovervåking og varsling</h3>
+          <p>Innsamling av prosessdata og alarmer med sikker overføring (4G/VPN) til dashboard.</p>
+          <p class="muted small">Eksempel: vannstand, trykk, temperatur, driftstatus.</p>
         </article>
 
         <article class="card">
-          <h3>Idriftsettelse</h3>
-          <p>Test, innkjøring og verifikasjon i felt – med fokus på sikker og forutsigbar drift.</p>
+          <h3>PLS- og HMI-leveranser</h3>
+          <p>Programmering, oppgraderinger og standardisering av sekvenser, alarmer og operatørbilder.</p>
+          <p class="muted small">Fokus på vedlikeholdbarhet og tydelig feilsøking.</p>
         </article>
 
         <article class="card">
-          <h3>Fjernovervåking (4G/VPN)</h3>
-          <p>Sikker tilgang til anlegg, logging og oppfølging – uten unødige åpninger mot nettet.</p>
+          <h3>Idriftsettelse i felt</h3>
+          <p>Test, innkjøring og verifikasjon av signaler, IO, motorstyringer og prosesslogikk.</p>
+          <p class="muted small">Dokumentasjon og overlevering inkludert ved behov.</p>
         </article>
-      </div>
-    </section>
-
-    <section id="status" class="section section-compact">
-      <div class="status-card">
-        <div class="status-title">
-          <h2>Status</h2>
-          <p class="muted">Live temperatur fra API.</p>
-        </div>
-
-        <div class="status-grid">
-          <div class="status-metric">
-            <span class="label">Temperatur</span>
-            <span class="value"><strong id="tempValue">–</strong> <span class="unit">°C</span></span>
-          </div>
-
-          <div class="status-metric">
-            <span class="label">Sist oppdatert</span>
-            <span class="value"><span id="tempTime">–</span></span>
-          </div>
-        </div>
-
-        <p class="small muted">Oppdateres automatisk hvert minutt.</p>
-      </div>
-    </section>
-
-    <section id="om" class="section">
-      <div class="split">
-        <div>
-          <h2>Om Solberg Tech</h2>
-
-          <p>
-            Solberg Tech leverer robuste og driftssikre IoT- og automasjonsløsninger for
-            industri, energiproduksjon og tekniske anlegg med behov for sikker fjernaksess.
-          </p>
-
-          <p>
-            Vi henter ønskede drifts- og prosessdata direkte fra eksisterende utstyr,
-            sensorer og styresystemer. Dette inkluderer integrasjon mot PLS-er og
-            kontrollutstyr via Modbus (TCP/RTU), digitale og analoge signaler samt andre
-            industrielle grensesnitt.
-          </p>
-
-          <p>
-            Ved behov leverer vi også programmering og tilpasning av PLS- og HMI-systemer,
-            slik at riktige data blir tilgjengelige, strukturert og visualisert både lokalt
-            og via sikre fjernløsninger.
-          </p>
-
-          <p>
-            Data overføres sikkert via mobilnett (4G/5G), fiber eller krypterte
-            VPN-forbindelser til en sentral plattform for overvåking, historikk og varsling.
-          </p>
-
-          <p class="muted">
-            Typiske datapunkter inkluderer effekt, nivå, trykk og temperatur, driftsstatus,
-            alarmer, energiforbruk, produksjon, driftstimer og hendelser.
-          </p>
-        </div>
       </div>
     </section>
 
@@ -139,32 +71,8 @@
   </div>
 
   <script>
-    // Temperatur
-    async function loadTemperature() {
-      const url = "https://api.solbergtech.no/temperature";
-      try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        const data = await res.json();
-
-        document.getElementById("tempValue").textContent =
-          (typeof data.temperature_c === "number") ? data.temperature_c.toFixed(1) : "–";
-
-        document.getElementById("tempTime").textContent =
-          data.ts_unix ? new Date(data.ts_unix * 1000).toLocaleString("no-NO") : "–";
-
-      } catch (e) {
-        document.getElementById("tempValue").textContent = "utilgjengelig";
-        document.getElementById("tempTime").textContent = "–";
-      }
-    }
-    loadTemperature();
-    setInterval(loadTemperature, 60_000);
-
-    // År
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Meny
     const btn = document.querySelector(".menu-btn");
     const menu = document.getElementById("siteMenu");
 
@@ -175,22 +83,16 @@
 
     btn.addEventListener("click", () => {
       const isOpen = btn.getAttribute("aria-expanded") === "true";
-      if (isOpen) {
-        closeMenu();
-      } else {
-        menu.hidden = false;
-        btn.setAttribute("aria-expanded", "true");
-      }
+      if (isOpen) closeMenu();
+      else { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); }
     });
 
-    // Lukk meny ved klikk utenfor
     document.addEventListener("click", (e) => {
       if (menu.hidden) return;
       const within = menu.contains(e.target) || btn.contains(e.target);
       if (!within) closeMenu();
     });
 
-    // Lukk meny ved ESC
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMenu();
     });
