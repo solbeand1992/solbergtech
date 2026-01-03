@@ -4,27 +4,49 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prosjekter | Solberg Tech</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <div class="container">
 
-<nav class="nav">
-  <a class="brand" href="index.html">
-    <img src="/SolbergtechLogo.png" class="nav-logo" alt="Solberg Tech logo">
-  </a>
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Solberg Tech">
+        <img src="/SolbergtechLogo.png" class="nav-logo" alt="Solberg Tech logo">
+      </a>
 
-  <div class="nav-links">
-    <a href="index.html">Forside</a>
-    <a href="prosjekter.html">Prosjekter</a>
-    <a href="kontakt.html">Kontakt</a>
-  </div>
-</nav>
+      <div class="nav-links">
+        <a href="index.html">Forside</a>
+        <a href="prosjekter.html">Prosjekter</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </nav>
 
     <header class="page-head">
       <h1>Prosjekter</h1>
-      <p class="lead">Et utvalg leveranser innen automasjon, overvåking og OT-fjernaksess.</p>
+      <p class="lead">Et utvalg leveranser innen automasjon, overvåking og sikker fjernaksess.</p>
     </header>
+
+    <!-- Topologi / illustrasjon -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Systemtopologi</h2>
+        <p class="muted">
+          Eksempel på sikker arkitektur med PLC/HMI i OT-nettverk, 4G-ruter og kryptert VPN for fjernovervåking.
+        </p>
+      </div>
+
+      <figure class="figure">
+        <img
+          src="/Topologi.png"
+          alt="Systemtopologi med PLC, HMI, 4G-ruter og sikker VPN-tilgang til server og dashboard"
+          class="figure-img"
+          loading="lazy"
+        >
+        <figcaption class="small muted">
+          Illustrasjon: OT-nettverk isolert fra internett, med sikker VPN-forbindelse for fjerninnsyn og service.
+        </figcaption>
+      </figure>
+    </section>
 
     <section class="section">
       <div class="cards">
@@ -67,31 +89,4 @@
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const btn = document.querySelector(".menu-btn");
-    const menu = document.getElementById("siteMenu");
-
-    function closeMenu() {
-      menu.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-    }
-
-    btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-      if (isOpen) closeMenu();
-      else { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); }
-    });
-
-    document.addEventListener("click", (e) => {
-      if (menu.hidden) return;
-      const within = menu.contains(e.target) || btn.contains(e.target);
-      if (!within) closeMenu();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-  </script>
-</body>
-</html>
+    document.getElementById("year").textContent = new Date().getFullYea
