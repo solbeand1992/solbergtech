@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt | Solberg Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Solberg Tech">
+        <img src="SolbergtechLogo.png" alt="Solberg Tech logo" class="nav-logo">
+      </a>
+
+      <button class="menu-btn" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="siteMenu">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <div id="siteMenu" class="menu" hidden>
+        <a href="index.html" class="menu-link">Forside</a>
+        <a href="prosjekter.html" class="menu-link">Prosjekter</a>
+        <a href="kontakt.html" class="menu-link active">Kontakt</a>
+      </div>
+    </nav>
+
+    <header class="page-head">
+      <h1>Kontakt</h1>
+      <p class="lead">Ta kontakt for befaring, tilbud eller en uforpliktende prat.</p>
+    </header>
+
+    <section class="section">
+      <div class="card">
+        <h2>E-post</h2>
+        <p class="muted">Svar normalt samme eller neste virkedag.</p>
+        <p><a class="btn" href="mailto:post@solbergtech.no">post@solbergtech.no</a></p>
+
+        <hr class="divider">
+
+        <p class="muted">Org.nr: <strong>935 387 523</strong></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="tiny muted">
+        © <span id="year"></span> Solberg Tech · Org.nr: 935 387 523
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const btn = document.querySelector(".menu-btn");
+    const menu = document.getElementById("siteMenu");
+
+    function closeMenu() {
+      menu.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
+
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeMenu();
+      else { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (menu.hidden) return;
+      const within = menu.contains(e.target) || btn.contains(e.target);
+      if (!within) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  </script>
+</body>
+</html>
