@@ -48,6 +48,7 @@
       </figure>
     </section>
 
+    <!-- Prosjektkort -->
     <section class="section">
       <div class="cards">
         <article class="card">
@@ -70,25 +71,7 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>
-          <h2>Kontakt</h2>
-          <p class="muted">Send en e-post, så svarer jeg så raskt jeg kan.</p>
-          <p class="muted">Org.nr: <strong>935 387 523</strong></p>
-        </div>
-        <div class="footer-actions">
-          <a class="btn" href="mailto:post@solbergtech.no">post@solbergtech.no</a>
-        </div>
-      </div>
-      <p class="tiny muted">
-        © <span id="year"></span> Solberg Tech · Org.nr: 935 387 523
-      </p>
-    </footer>
-
-  </div>
-    </section>
-
+    <!-- Status (valgfritt på prosjekter-siden) -->
     <section id="status" class="section section-compact">
       <div class="status-card">
         <div class="status-title">
@@ -111,7 +94,29 @@
         <p class="small muted">Oppdateres automatisk hvert minutt.</p>
       </div>
     </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <h2>Kontakt</h2>
+          <p class="muted">Send en e-post, så svarer jeg så raskt jeg kan.</p>
+          <p class="muted">Org.nr: <strong>935 387 523</strong></p>
+        </div>
+        <div class="footer-actions">
+          <a class="btn" href="mailto:post@solbergtech.no">post@solbergtech.no</a>
+        </div>
+      </div>
+      <p class="tiny muted">
+        © <span id="year"></span> Solberg Tech · Org.nr: 935 387 523
+      </p>
+    </footer>
+
+  </div>
+
   <script>
+    // År
+    document.getElementById("year").textContent = new Date().getFullYear();
+
     // Temperatur
     async function loadTemperature() {
       const url = "https://api.solbergtech.no/temperature";
@@ -131,42 +136,9 @@
         document.getElementById("tempTime").textContent = "–";
       }
     }
+
     loadTemperature();
     setInterval(loadTemperature, 60_000);
-
-    // År
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Meny
-    const btn = document.querySelector(".menu-btn");
-    const menu = document.getElementById("siteMenu");
-
-    function closeMenu() {
-      menu.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-    }
-
-    btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-      if (isOpen) {
-        closeMenu();
-      } else {
-        menu.hidden = false;
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-
-    // Lukk meny ved klikk utenfor
-    document.addEventListener("click", (e) => {
-      if (menu.hidden) return;
-      const within = menu.contains(e.target) || btn.contains(e.target);
-      if (!within) closeMenu();
-    });
-
-    // Lukk meny ved ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
   </script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYea
+</body>
+</html>
