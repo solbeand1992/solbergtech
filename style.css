@@ -31,7 +31,7 @@
   position: absolute;
   left: 0;
   width: 22px;
-  height: 2px;
+  height: 20px;
   background: currentColor;
 }
 .menu-icon::before { top: -7px; }
