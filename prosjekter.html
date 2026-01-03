@@ -36,7 +36,8 @@
       <div class="section-head">
         <h2>Systemtopologi</h2>
         <p class="muted">
-          Eksempel på sikker arkitektur med PLC/HMI i OT-nettverk, 4G-ruter og kryptert VPN.
+          Eksempel på sikker arkitektur med PLC/HMI i lukket OT-nettverk,
+          industriell 4G-ruter og kryptert VPN for fjernovervåking.
         </p>
       </div>
 
@@ -48,7 +49,7 @@
           loading="lazy"
         >
         <figcaption class="small muted">
-          OT-nettverk isolert fra internett med sikker VPN-basert fjernaksess.
+          OT-nettverk isolert fra internett, med all ekstern tilgang via VPN.
         </figcaption>
       </figure>
     </section>
@@ -59,7 +60,8 @@
         <article class="card">
           <h3>Fjernovervåking og varsling</h3>
           <p>
-            Innsamling av prosessdata og alarmer med sikker overføring (4G/VPN) til dashboard.
+            Innsamling av prosessdata og alarmer med sikker overføring (4G/VPN)
+            til dashboard eller SCADA.
           </p>
           <p class="muted small">
             Eksempel: vannstand, trykk, temperatur, driftstatus.
@@ -69,17 +71,19 @@
         <article class="card">
           <h3>PLS- og HMI-leveranser</h3>
           <p>
-            Programmering, oppgraderinger og standardisering av sekvenser, alarmer og operatørbilder.
+            Programmering, oppgraderinger og standardisering av sekvenser,
+            alarmer og operatørbilder.
           </p>
           <p class="muted small">
-            Fokus på vedlikeholdbarhet og tydelig feilsøking.
+            Fokus på driftssikkerhet og enkel feilsøking.
           </p>
         </article>
 
         <article class="card">
           <h3>Idriftsettelse i felt</h3>
           <p>
-            Test, innkjøring og verifikasjon av signaler, IO, motorstyringer og prosesslogikk.
+            Test, innkjøring og verifikasjon av signaler, IO,
+            motorstyringer og prosesslogikk.
           </p>
           <p class="muted small">
             Dokumentasjon og overlevering ved behov.
@@ -93,7 +97,7 @@
       <div class="status-card">
         <div class="status-title">
           <h2>Status</h2>
-          <p class="muted">Live temperatur fra API.</p>
+          <p class="muted">Live temperatur fra API -> Wifi -> VPS -> Solbergtech.no.</p>
         </div>
 
         <div class="status-grid">
@@ -116,13 +120,11 @@
         <p class="small muted">Oppdateres automatisk hvert minutt.</p>
       </div>
     </section>
+
+  </div>
+
   <!-- SCRIPT -->
   <script>
-    // År
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    // Temperatur
     async function loadTemperature() {
       const url = "https://api.solbergtech.no/temperature";
       try {
