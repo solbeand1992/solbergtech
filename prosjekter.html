@@ -6,9 +6,11 @@
   <title>Prosjekter | Solberg Tech</title>
   <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
   <div class="container">
 
+    <!-- NAV -->
     <nav class="nav">
       <a class="brand" href="index.html" aria-label="Solberg Tech">
         <img src="/SolbergtechLogo.png" class="nav-logo" alt="Solberg Tech logo">
@@ -21,57 +23,72 @@
       </div>
     </nav>
 
+    <!-- HEADER -->
     <header class="page-head">
       <h1>Prosjekter</h1>
-      <p class="lead">Et utvalg leveranser innen automasjon, overvåking og sikker fjernaksess.</p>
+      <p class="lead">
+        Et utvalg leveranser innen automasjon, overvåking og sikker fjernaksess.
+      </p>
     </header>
 
-    <!-- Topologi / illustrasjon -->
+    <!-- TOPOLOGI -->
     <section class="section">
       <div class="section-head">
         <h2>Systemtopologi</h2>
         <p class="muted">
-          Eksempel på sikker arkitektur med PLC/HMI i OT-nettverk, 4G-ruter og kryptert VPN for fjernovervåking.
+          Eksempel på sikker arkitektur med PLC/HMI i OT-nettverk, 4G-ruter og kryptert VPN.
         </p>
       </div>
 
       <figure class="figure">
         <img
           src="/Topologi.png"
-          alt="Systemtopologi med PLC, HMI, 4G-ruter og sikker VPN-tilgang til server og dashboard"
+          alt="Systemtopologi med PLC, HMI, 4G-ruter og sikker VPN-tilgang"
           class="figure-img"
           loading="lazy"
         >
         <figcaption class="small muted">
-          Illustrasjon: OT-nettverk isolert fra internett, med sikker VPN-forbindelse for fjerninnsyn og service.
+          OT-nettverk isolert fra internett med sikker VPN-basert fjernaksess.
         </figcaption>
       </figure>
     </section>
 
-    <!-- Prosjektkort -->
+    <!-- PROSJEKTKORT -->
     <section class="section">
       <div class="cards">
         <article class="card">
           <h3>Fjernovervåking og varsling</h3>
-          <p>Innsamling av prosessdata og alarmer med sikker overføring (4G/VPN) til dashboard.</p>
-          <p class="muted small">Eksempel: vannstand, trykk, temperatur, driftstatus.</p>
+          <p>
+            Innsamling av prosessdata og alarmer med sikker overføring (4G/VPN) til dashboard.
+          </p>
+          <p class="muted small">
+            Eksempel: vannstand, trykk, temperatur, driftstatus.
+          </p>
         </article>
 
         <article class="card">
           <h3>PLS- og HMI-leveranser</h3>
-          <p>Programmering, oppgraderinger og standardisering av sekvenser, alarmer og operatørbilder.</p>
-          <p class="muted small">Fokus på vedlikeholdbarhet og tydelig feilsøking.</p>
+          <p>
+            Programmering, oppgraderinger og standardisering av sekvenser, alarmer og operatørbilder.
+          </p>
+          <p class="muted small">
+            Fokus på vedlikeholdbarhet og tydelig feilsøking.
+          </p>
         </article>
 
         <article class="card">
           <h3>Idriftsettelse i felt</h3>
-          <p>Test, innkjøring og verifikasjon av signaler, IO, motorstyringer og prosesslogikk.</p>
-          <p class="muted small">Dokumentasjon og overlevering inkludert ved behov.</p>
+          <p>
+            Test, innkjøring og verifikasjon av signaler, IO, motorstyringer og prosesslogikk.
+          </p>
+          <p class="muted small">
+            Dokumentasjon og overlevering ved behov.
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- Status (valgfritt på prosjekter-siden) -->
+    <!-- STATUS -->
     <section id="status" class="section section-compact">
       <div class="status-card">
         <div class="status-title">
@@ -82,12 +99,17 @@
         <div class="status-grid">
           <div class="status-metric">
             <span class="label">Temperatur</span>
-            <span class="value"><strong id="tempValue">–</strong> <span class="unit">°C</span></span>
+            <span class="value">
+              <strong id="tempValue">–</strong>
+              <span class="unit">°C</span>
+            </span>
           </div>
 
           <div class="status-metric">
             <span class="label">Sist oppdatert</span>
-            <span class="value"><span id="tempTime">–</span></span>
+            <span class="value">
+              <span id="tempTime">–</span>
+            </span>
           </div>
         </div>
 
@@ -95,9 +117,34 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <h2>Kontakt</h2>
+          <p class="muted">Send en e-post, så svarer jeg så raskt jeg kan.</p>
+          <p class="muted">Org.nr: <strong>935 387 523</strong></p>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn" href="mailto:post@solbergtech.no">
+            post@solbergtech.no
+          </a>
+        </div>
+      </div>
+
+      <p class="tiny muted">
+        © <span id="year"></span> Solberg Tech · Org.nr: 935 387 523
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT -->
   <script>
     // År
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
     // Temperatur
     async function loadTemperature() {
@@ -108,10 +155,14 @@
         const data = await res.json();
 
         document.getElementById("tempValue").textContent =
-          (typeof data.temperature_c === "number") ? data.temperature_c.toFixed(1) : "–";
+          (typeof data.temperature_c === "number")
+            ? data.temperature_c.toFixed(1)
+            : "–";
 
         document.getElementById("tempTime").textContent =
-          data.ts_unix ? new Date(data.ts_unix * 1000).toLocaleString("no-NO") : "–";
+          data.ts_unix
+            ? new Date(data.ts_unix * 1000).toLocaleString("no-NO")
+            : "–";
 
       } catch (e) {
         document.getElementById("tempValue").textContent = "utilgjengelig";
@@ -122,5 +173,6 @@
     loadTemperature();
     setInterval(loadTemperature, 60_000);
   </script>
+
 </body>
 </html>
