@@ -72,3 +72,94 @@
   border-top: 1px solid rgba(0,0,0,0.1);
   margin: 18px 0;
 }
+/* --- Menu patch (trygg å legge nederst) --- */
+
+/* Sørg for at hidden alltid skjuler menyen */
+.menu[hidden] { display: none !important; }
+
+/* Ikke overskriv alt – bare legg til det nav trenger for meny */
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Brand/link oppfører seg pent i flex */
+.nav .brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Menyknapp høyre */
+.menu-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 0;
+  color: inherit; /* viktig hvis du har tema/farger */
+}
+
+.menu-btn:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* Hamburger-ikon */
+.menu-icon {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  position: relative;
+}
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+}
+.menu-icon::before { top: -7px; }
+.menu-icon::after  { top: 7px; }
+
+/* Dropdown meny */
+.menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 180px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.08);
+  z-index: 50;
+}
+
+.menu-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+.menu-link:hover {
+  background: rgba(0,0,0,0.05);
+}
+.menu-link.active {
+  background: rgba(0,0,0,0.08);
+  font-weight: 600;
+}
+
+/* Små hjelpere */
+.divider {
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 18px 0;
+}
