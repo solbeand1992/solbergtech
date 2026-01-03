@@ -10,12 +10,22 @@
   <div class="container">
 
     <nav class="nav">
-      <a class="brand" href="#top" aria-label="Solberg Tech">
+      <a class="brand" href="index.html" aria-label="Solberg Tech">
         <img src="SolbergtechLogo.png" alt="Solberg Tech logo" class="nav-logo">
       </a>
+
+      <button class="menu-btn" type="button" aria-label="Åpne meny" aria-expanded="false" aria-controls="siteMenu">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <div id="siteMenu" class="menu" hidden>
+        <a href="index.html" class="menu-link">Forside</a>
+        <a href="prosjekter.html" class="menu-link">Prosjekter</a>
+        <a href="kontakt.html" class="menu-link">Kontakt</a>
+      </div>
     </nav>
 
-    <header id="top" class="hero">
+    <header class="hero">
       <div class="hero-content">
         <h1>Industriell automasjon og OT-fjernaksess</h1>
         <p class="lead">
@@ -23,7 +33,7 @@
         </p>
 
         <div class="hero-cta">
-          <a class="btn" href="#kontakt">Ta kontakt</a>
+          <a class="btn" href="kontakt.html">Ta kontakt</a>
         </div>
       </div>
     </header>
@@ -110,7 +120,7 @@
       </div>
     </section>
 
-    <footer id="kontakt" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
         <div>
           <h2>Kontakt</h2>
@@ -129,6 +139,7 @@
   </div>
 
   <script>
+    // Temperatur
     async function loadTemperature() {
       const url = "https://api.solbergtech.no/temperature";
       try {
@@ -147,11 +158,42 @@
         document.getElementById("tempTime").textContent = "–";
       }
     }
-
     loadTemperature();
     setInterval(loadTemperature, 60_000);
 
+    // År
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Meny
+    const btn = document.querySelector(".menu-btn");
+    const menu = document.getElementById("siteMenu");
+
+    function closeMenu() {
+      menu.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
+
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+      } else {
+        menu.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    // Lukk meny ved klikk utenfor
+    document.addEventListener("click", (e) => {
+      if (menu.hidden) return;
+      const within = menu.contains(e.target) || btn.contains(e.target);
+      if (!within) closeMenu();
+    });
+
+    // Lukk meny ved ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
   </script>
 </body>
 </html>
