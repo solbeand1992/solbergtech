@@ -87,7 +87,30 @@
     </footer>
 
   </div>
+    </section>
 
+    <section id="status" class="section section-compact">
+      <div class="status-card">
+        <div class="status-title">
+          <h2>Status</h2>
+          <p class="muted">Live temperatur fra API.</p>
+        </div>
+
+        <div class="status-grid">
+          <div class="status-metric">
+            <span class="label">Temperatur</span>
+            <span class="value"><strong id="tempValue">–</strong> <span class="unit">°C</span></span>
+          </div>
+
+          <div class="status-metric">
+            <span class="label">Sist oppdatert</span>
+            <span class="value"><span id="tempTime">–</span></span>
+          </div>
+        </div>
+
+        <p class="small muted">Oppdateres automatisk hvert minutt.</p>
+      </div>
+    </section>
   <script>
     // Temperatur
     async function loadTemperature() {
